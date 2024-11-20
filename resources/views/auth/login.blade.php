@@ -9,7 +9,7 @@
      <style>
         body {
             background-color: #28a745; /* Fondo verde campo */
-            background:url('vendor/adminlte/dist/img/fondo_agritech.png') ;
+            background:url('vendor/adminlte/dist/img/fondo.png') ;
             background-size: cover;
             display: flex;
             justify-content: center;
