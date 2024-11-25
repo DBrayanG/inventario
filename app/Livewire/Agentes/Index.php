@@ -22,6 +22,8 @@ class Index extends Component
     public $email;
     public $direccion;
     public $tipo_agente_id;
+    public $filtroTipoAgente = null;
+
 
     protected $rules = [
         'nombre' => 'required|string|max:255',
@@ -46,7 +48,7 @@ class Index extends Component
     public function createAgente()
     {
         $this->validate();
-
+        $this->tipoAgentes = TipoAgente::all();
         Agente::create([
             'nombre' => $this->nombre,
             'telefono' => $this->telefono,
@@ -108,6 +110,18 @@ class Index extends Component
 
     public function render()
     {
-        return view('livewire.agentes.index');
+        $agentes = Agente::query()
+            ->when($this->filtroTipoAgente, function ($query) {
+                $query->where('tipo_agente_id', $this->filtroTipoAgente);
+            })
+            ->with('tipoAgente') // Relación con el tipo de agente
+            ->get();
+
+        return view('livewire.agentes.index', [
+            'agentes' => $agentes,
+            'tipoAgentes' => TipoAgente::all(), // Para el filtro
+        ]);
     }
+
+    
 }

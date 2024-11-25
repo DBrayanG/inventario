@@ -367,7 +367,13 @@ return [
             'text' => 'Usuarios',
             'icon' => 'fas fa-users',  // Cambiado a un ícono de usuarios
             'url' => 'admin/usuarios',
-        ], [
+        ],
+        [
+            'text' => 'Clientes',
+            'icon' => 'fas fa-users',  // Cambiado a un ícono de usuarios
+            'url' => 'admin/agentes',
+        ],
+        [
             'text' => 'Roles',
             'icon' => 'fas fa-user-shield',  // Cambiado a un ícono de roles o configuración
             'url' => 'admin/roles',

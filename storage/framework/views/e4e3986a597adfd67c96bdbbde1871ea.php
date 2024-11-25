@@ -1,7 +1,20 @@
 <div>
     <div>
         <button wire:click="showCreateModal" class="btn btn-primary"><i class="fa fa-plus"></i> Nuevo Agente</button>
+        <button wire:click="$refresh" class="btn btn-secondary">
+            <i class="fa fa-refresh"></i> Refrescar
+        </button>
     </div>
+    <div class="mb-4 mt-3">
+        <label for="filtroTipoAgente" class="form-label">Filtrar por Tipo de Agente:</label>
+        <select id="filtroTipoAgente" wire:model="filtroTipoAgente" class="form-control">
+            <option value="">Todos</option>
+            <!--[if BLOCK]><![endif]--><?php $__currentLoopData = $tipoAgentes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $tipoAgente): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                <option value="<?php echo e($tipoAgente->tipo_agente_id); ?>"><?php echo e($tipoAgente->nombre); ?></option>
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?><!--[if ENDBLOCK]><![endif]-->
+        </select>
+    </div>
+    
   <!-- //agregar un boton para refrescar el conponente icono refresh -->
     <div class="mt-4">
         <table class="table table-striped table-bordered">
@@ -41,6 +54,8 @@
                     <h5 class="modal-title">Crear Nuevo Agente</h5>
                     <button type="button" wire:click="$set('showCreate', false)" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 </div>
+                
+                
                 <div class="modal-body">
                     <form wire:submit.prevent="createAgente">
                         <!-- Campos del formulario -->

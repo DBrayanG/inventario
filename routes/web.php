@@ -5,6 +5,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SearchController;
 use Illuminate\Support\Facades\Route;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 Route::get('/', [HomeController::class, 'index'])->name('login');
 
@@ -28,6 +29,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('admin/permisos', [DashboardController::class, 'permisos'])->name('admin.permisos');
     Route::get('admin/roles', [DashboardController::class, 'roles'])->name('admin.roles');
     Route::get('admin/usuarios', [DashboardController::class, 'usuarios'])->name('admin.usuarios');
+    Route::get('admin/agentes',[DashboardController::class, 'agentes'])->name('admin.agentes');
+    Route::get('admin/clientes', [DashboardController::class, 'clientes'])->name('admin.clientes');
     Route::get('admin/reportes', [DashboardController::class, 'reportes'])->name('admin.reportes');
     Route::get('admin/estadisticas', [DashboardController::class, 'estadisticas'])->name('admin.estadisticas');
 });

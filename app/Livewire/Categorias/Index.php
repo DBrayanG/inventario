@@ -9,6 +9,10 @@ use Livewire\Component;
 class Index extends Component
 {
     public $categorias;
+    public $errorMessage = "";
+    public $successMessage = "";
+    public $showSuccess = false;
+    public $showError = false;
     public $showCreate = false;
     public $showEdit = false;
     public $selectedCategoriaId;
@@ -34,6 +38,8 @@ class Index extends Component
             'nombre' => $this->nombre,
             'descripcion' => $this->descripcion,
         ]);
+        $this->showSuccess = true;
+        $this->successMessage = "Categoría creada satisfactoriamente.";
 
         session()->flash('message', 'Categoria creado satisfactoriamente.');
 
@@ -60,6 +66,10 @@ class Index extends Component
             'descripcion' => $this->descripcion,
         ]);
 
+        $this->showSuccess = true;
+        $this->successMessage = "Categoría actualizada satisfactoriamente.";
+        $this->showEdit = false;
+
         session()->flash('message', 'Categoria actualizado satisfactoriamente.');
 
         $this->reset(['nombre', 'showEdit', 'selectedCategoriaId']);
@@ -69,6 +79,8 @@ class Index extends Component
     public function deleteCategoria($id)
     {
         Categoria::destroy($id);
+        $this->showSuccess = true;
+        $this->successMessage = "Categoría eliminada satisfactoriamente.";
 
         session()->flash('message', 'Categoria eliminado satisfactoriamente.');
 
