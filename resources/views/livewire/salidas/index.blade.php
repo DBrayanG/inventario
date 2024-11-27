@@ -1,7 +1,7 @@
 <div>
     <div class="row mt-4">
         <div class="col-md-12">
-            <h3>Gestión de Operaciones</h3>
+            <h3>Gestión de Salidas</h3>
             @if ($successMessage)
             <div class="alert alert-success">{{ $successMessage }}</div>
             @endif
@@ -9,20 +9,34 @@
             <div class="alert alert-danger">{{ $errorMessage }}</div>
             @endif
 
-            <button wire:click="showCreateModal" class="btn btn-primary mb-3">Crear Operación</button>
-
+            <button wire:click="showCreateModal" class="btn btn-primary mb-3">Crear Salida</button>
+            <button wire:click="generatePDF" class="btn btn-primary mb-3">Descargar Informe PDF</button>
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label for="fechaInicio">Fecha Inicio:</label>
+                    <input type="date" wire:model="fechaInicio" id="fechaInicio" class="form-control">
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="fechaFin">Fecha Fin:</label>
+                    <input type="date" wire:model="fechaFin" id="fechaFin" class="form-control">
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="mes">Mes:</label>
+                    <input type="month" wire:model="mes" id="mes" class="form-control">
+                </div>
+            </div>
             <!-- Modal de Crear -->
             <div class="modal fade @if($showCreate) show d-block @endif" tabindex="-1" role="dialog">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title">Crear Nueva Operación</h5>
+                            <h5 class="modal-title">Crear Nueva Salida</h5>
                             <button type="button" class="close" wire:click="closeModal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form wire:submit.prevent="createOperacion">
+                            <form wire:submit.prevent="createSalida">
                                 <div class="row">
                                     <!-- Columna 1 -->
                                     <div class="col-md-6">
@@ -78,13 +92,13 @@
     <div class="modal-dialog modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Editar Operación</h5>
+                <h5 class="modal-title">Editar Salida</h5>
                 <button type="button" class="close" wire:click="closeModal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <form wire:submit.prevent="updateOperacion">
+                <form wire:submit.prevent="updateSalida">
                     <div class="row">
                         <!-- Columna 1 -->
                         <div class="col-md-6">
@@ -164,18 +178,18 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($operaciones as $operacion)
+                    @foreach($salidas as $salida)
                     <tr>
-                        <td>{{ $operacion->operacion_id }}</td>
-                        <td>{{ $operacion->producto->nombre }}</td>
-                        <td>{{ $operacion->fecha }}</td>
-                        <td>{{ $operacion->cantidad }}</td>
-                        <td>{{ $operacion->tipoOperacion->nombre }}</td>
-                        <td>{{ $operacion->agente->nombre }}</td>
-                        <td>{{ $operacion->usuario->name }}</td>
+                        <td>{{ $salida->id }}</td>
+                        <td>{{ $salida->producto->nombre }}</td>
+                        <td>{{ $salida->fecha }}</td>
+                        <td>{{ $salida->cantidad }}</td>
+                        <td>{{ $salida->tipoOperacion->nombre }}</td>
+                        <td>{{ $salida->agente->nombre }}</td>
+                        <td>{{ $salida->usuario->name }}</td>
                         <td>
-                            <button wire:click="editOperacion({{ $operacion->operacion_id }})" class="btn btn-sm btn-warning">Editar</button>
-                            <button wire:click="deleteOperacion({{ $operacion->operacion_id }})" class="btn btn-sm btn-danger">Eliminar</button>
+                            <button wire:click="editSalida({{ $salida->id }})" class="btn btn-sm btn-warning">Editar</button>
+                            <button wire:click="deleteSalida({{ $salida->id }})" class="btn btn-sm btn-danger">Eliminar</button>
                         </td>
                     </tr>
                     @endforeach

@@ -1,6 +1,6 @@
 <div>
     <div>
-        <button wire:click="showCreateModal" class="btn btn-primary"><i class="fa fa-plus"></i> Nueva tipoOperacion</button>
+        <button wire:click="showCreateModal" class="btn btn-primary"><i class="fa fa-plus"></i> Nuevo tipo Operacion</button>
     </div>
 
     <div class="mt-4">
@@ -29,7 +29,7 @@
         <div class="modal-dialog" tipoOperacion="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Crear Nueva tipoOperacion</h5>
+                    <h5 class="modal-title">Crear Nuevo tipo Operacion</h5>
                     <button type="button" wire:click="$set('showCreate', false)" class="close" aria-label="Close">
                         <span aria-htipo_operacion_idden="true">&times;</span>
                     </button>
@@ -44,7 +44,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" wire:click="$set('showCreate', false)" class="btn btn-secondary">Cancelar</button>
-                    <button type="button" wire:click="createtipoOperacion" class="btn btn-primary">Crear tipoOperacion</button>
+                    <button type="button" wire:click="createtipoOperacion" class="btn btn-primary">Crear tipo Operacion</button>
                 </div>
             </div>
         </div>
@@ -55,7 +55,7 @@
         <div class="modal-dialog" tipoOperacion="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Editar tipoOperacion</h5>
+                    <h5 class="modal-title">Editar tipo Operacion</h5>
                     <button type="button" wire:click="$set('showEdit', false)" class="close" aria-label="Close">
                         <span aria-htipo_operacion_idden="true">&times;</span>
                     </button>

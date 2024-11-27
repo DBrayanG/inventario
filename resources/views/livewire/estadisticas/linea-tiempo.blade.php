@@ -6,7 +6,7 @@
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             // Convertir la variable PHP $operaciones a JSON
-            const operaciones = @json($operaciones);
+            const operaciones = @json($Salida);
 
             // Cargar Google Charts
             google.charts.load('current', {
@@ -25,7 +25,7 @@
                 });
 
                 const options = {
-                    title: 'OPERACIONES',
+                    title: 'SALIDAS',
                      hAxis: {
                         title: 'Fecha'
                     },

@@ -1,6 +1,4 @@
 <div class="row">
-
-  
         <div class="col">
             <?php
 $__split = function ($name, $params = []) {
@@ -18,7 +16,6 @@ unset($__params);
 unset($__split);
 if (isset($__slots)) unset($__slots);
 ?>
-
         </div>
         <div class="col">
             <?php
@@ -38,10 +35,4 @@ unset($__split);
 if (isset($__slots)) unset($__slots);
 ?>
         </div>
-
-
-    
-
-
-
 </div><?php /**PATH E:\2-2024\Taller\inventario\resources\views/livewire/estadisticas/index.blade.php ENDPATH**/ ?>

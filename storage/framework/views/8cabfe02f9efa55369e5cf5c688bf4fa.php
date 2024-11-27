@@ -6,13 +6,16 @@
 
 <?php $__env->startSection('content'); ?>
 <div class="container mt-4">
+    
+    
+    
     <div class="card mb-4">
         <div class="card-body">
             <?php
 $__split = function ($name, $params = []) {
     return [$name, $params];
 };
-[$__name, $__params] = $__split("estadisticas.linea-tiempo");
+[$__name, $__params] = $__split("puntos-re-orden.index");
 
 $__html = app('livewire')->mount($__name, $__params, 'lw-4147401558-0', $__slots ?? [], get_defined_vars());
 
@@ -33,7 +36,7 @@ if (isset($__slots)) unset($__slots);
 $__split = function ($name, $params = []) {
     return [$name, $params];
 };
-[$__name, $__params] = $__split("almacen.index");
+[$__name, $__params] = $__split("estantes.index");
 
 $__html = app('livewire')->mount($__name, $__params, 'lw-4147401558-1', $__slots ?? [], get_defined_vars());
 
@@ -46,69 +49,6 @@ unset($__split);
 if (isset($__slots)) unset($__slots);
 ?>
         </div>
-    </div>
-    <div class="card mb-4">
-        <div class="card-body">
-            <?php
-$__split = function ($name, $params = []) {
-    return [$name, $params];
-};
-[$__name, $__params] = $__split("puntos-re-orden.index");
-
-$__html = app('livewire')->mount($__name, $__params, 'lw-4147401558-2', $__slots ?? [], get_defined_vars());
-
-echo $__html;
-
-unset($__html);
-unset($__name);
-unset($__params);
-unset($__split);
-if (isset($__slots)) unset($__slots);
-?>
-        </div>
-    </div>
-
-
-    <div class="card mb-4">
-        <div class="card-body">
-            <?php
-$__split = function ($name, $params = []) {
-    return [$name, $params];
-};
-[$__name, $__params] = $__split("estantes.index");
-
-$__html = app('livewire')->mount($__name, $__params, 'lw-4147401558-3', $__slots ?? [], get_defined_vars());
-
-echo $__html;
-
-unset($__html);
-unset($__name);
-unset($__params);
-unset($__split);
-if (isset($__slots)) unset($__slots);
-?>
-        </div>
-    </div>
-    <div class="card mb-4">
-        <div class="card-body">
-            <?php
-$__split = function ($name, $params = []) {
-    return [$name, $params];
-};
-[$__name, $__params] = $__split("categorias.index");
-
-$__html = app('livewire')->mount($__name, $__params, 'lw-4147401558-4', $__slots ?? [], get_defined_vars());
-
-echo $__html;
-
-unset($__html);
-unset($__name);
-unset($__params);
-unset($__split);
-if (isset($__slots)) unset($__slots);
-?>
-        </div>
-    </div>
 </div>
 
 <?php $__env->stopSection(); ?>

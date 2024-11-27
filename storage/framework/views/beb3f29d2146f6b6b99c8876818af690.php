@@ -6,13 +6,14 @@
 
 <?php $__env->startSection('content'); ?>
 <div class="container mt-4">
+    
     <div class="card mb-4">
         <div class="card-body">
             <?php
 $__split = function ($name, $params = []) {
     return [$name, $params];
 };
-[$__name, $__params] = $__split("estantes.index");
+[$__name, $__params] = $__split("categorias.index");
 
 $__html = app('livewire')->mount($__name, $__params, 'lw-1501176544-0', $__slots ?? [], get_defined_vars());
 
@@ -32,29 +33,9 @@ if (isset($__slots)) unset($__slots);
 $__split = function ($name, $params = []) {
     return [$name, $params];
 };
-[$__name, $__params] = $__split("categorias.index");
-
-$__html = app('livewire')->mount($__name, $__params, 'lw-1501176544-1', $__slots ?? [], get_defined_vars());
-
-echo $__html;
-
-unset($__html);
-unset($__name);
-unset($__params);
-unset($__split);
-if (isset($__slots)) unset($__slots);
-?>
-        </div>
-    </div>
-    <div class="card mb-4">
-        <div class="card-body">
-            <?php
-$__split = function ($name, $params = []) {
-    return [$name, $params];
-};
 [$__name, $__params] = $__split("unidad-medidas.index");
 
-$__html = app('livewire')->mount($__name, $__params, 'lw-1501176544-2', $__slots ?? [], get_defined_vars());
+$__html = app('livewire')->mount($__name, $__params, 'lw-1501176544-1', $__slots ?? [], get_defined_vars());
 
 echo $__html;
 

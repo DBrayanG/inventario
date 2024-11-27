@@ -17,6 +17,7 @@
                 <tr>
                     <th scope="col">Producto</th>
                     <th scope="col">Stock Actual</th>
+                    <th scope="col">Stock Minimo</th>
                     <th scope="col">ROP</th>
                     <th scope="col">Cantidad a Pedir</th>
                 </tr>
@@ -26,6 +27,7 @@
                 <tr>
                     <td>{{ $producto['producto'] }}</td>
                     <td>{{ $producto['stock_actual'] }}</td>
+                    <td>{{ $producto['stock_minimo'] }}</td>
                     <td>{{ $producto['rop'] }}</td>
                     <td>{{ $producto['cantidad_a_pedir'] }}</td>
                 </tr>

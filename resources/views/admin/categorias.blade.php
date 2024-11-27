@@ -8,11 +8,11 @@
 
 @section('content')
 <div class="container mt-4">
-    <div class="card mb-4">
+    {{-- <div class="card mb-4">
         <div class="card-body">
             @livewire("estantes.index")
         </div>
-    </div>
+    </div> --}}
     <div class="card mb-4">
         <div class="card-body">
             @livewire("categorias.index")

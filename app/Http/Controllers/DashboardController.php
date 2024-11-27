@@ -37,6 +37,9 @@ class DashboardController extends Controller
         return view('admin.usuarios');
     }
 
+    public function clientes(){
+        return view('admin.clientes');
+    }
     public function agentes(){
         return view('admin.agentes');
     }

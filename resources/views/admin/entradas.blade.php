@@ -9,19 +9,24 @@
 @section('content')
 
 <div class="container mt-4">
+    {{-- <div class="card mb-4">
+        <div class="card-body">
+            @livewire("estadisticas.linea-tiempo-entrada")
+        </div>        
+    </div> --}}
     <div class="card mb-4">
         <div class="card-body">
-            @livewire("salidas.index")
+            @livewire("entradas.index")
         </div>
     </div>
 
 
 
-    {{-- <div class="card mb-4">
+    <div class="card mb-4">
         <div class="card-body">
             @livewire("tipo-operacion.index")
         </div>
-    </div> --}}
+    </div>
     {{-- <div class="card mb-4">
         <div class="card-body">
             @livewire("entradas.index")

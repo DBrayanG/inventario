@@ -324,13 +324,41 @@ return [
             'can' => 'manage-blog',
             'icon' => 'fas fa-blog',
         ],
-        [
+        /* [
             'text' => 'dashboard',
             'url' => 'admin/dashboard',
             'icon' => 'fas fa-tachometer-alt',
             'label_color' => 'success',
+        ], */
+        ['header' => 'Usuarios'],
+        
+        [
+            'text' => 'Usuarios',
+            'icon' => 'fas fa-users',  // Cambiado a un ícono de usuarios
+            'url' => 'admin/usuarios',
         ],
-        ['header' => 'Productos'],
+        [
+            'text' => 'Roles',
+            'icon' => 'fas fa-user-shield',  // Cambiado a un ícono de roles o configuración
+            'url' => 'admin/roles',
+        ],
+        [
+            'text' => 'Permisos',
+            'icon' => 'fas fa-user-shield',
+            'url' => 'admin/permisos',
+        ],
+        /* [
+            'text' => 'Clientes',
+            'icon' => 'fas fa-users',  // Cambiado a un ícono de usuarios
+            'url' => 'admin/clientes',
+        ], */
+        [
+            'text' => 'Agentes',
+            'icon' => 'fas fa-users',  // Cambiado a un ícono de usuarios
+            'url' => 'admin/agentes',
+        ],
+        
+        ['header' => 'Inventario'],
         [
             'text' => 'Productos',
             'url' => 'admin/productos',
@@ -341,7 +369,7 @@ return [
             'url' => 'admin/categorias',
             'icon' => 'fas fa-tags',
         ],
-        ['header' => 'Operaciones'],
+        
         [
             'text' => 'Entradas',
             'url' => 'admin/entradas',
@@ -352,33 +380,12 @@ return [
             'url' => 'admin/salidas',
             'icon' => 'fas fa-tags',
         ],
-        ['header' => 'Configuraciones'],
         [
             'text' => 'Almacen',
             'icon' => 'fas fa-warehouse',
             'url' => 'admin/almacen',
         ],
-        [
-            'text' => 'Permisos',
-            'icon' => 'fas fa-user-shield',
-            'url' => 'admin/permisos',
-        ],
-        [
-            'text' => 'Usuarios',
-            'icon' => 'fas fa-users',  // Cambiado a un ícono de usuarios
-            'url' => 'admin/usuarios',
-        ],
-        [
-            'text' => 'Clientes',
-            'icon' => 'fas fa-users',  // Cambiado a un ícono de usuarios
-            'url' => 'admin/agentes',
-        ],
-        [
-            'text' => 'Roles',
-            'icon' => 'fas fa-user-shield',  // Cambiado a un ícono de roles o configuración
-            'url' => 'admin/roles',
-        ],
-        ['header' => 'Soporte'],
+        ['header' => 'Reporte y Estadisticas'],
         [
             'text' => 'Reportes',
             'icon' => 'fas fa-chart-bar',
@@ -389,8 +396,6 @@ return [
             'icon' => 'fas fa-chart-pie',
             'url' => 'admin/estadisticas',
         ],
-
-
     ],
 
 

@@ -26,6 +26,15 @@
                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?><!--[if ENDBLOCK]><![endif]-->
                                 </select>
                             </div>
+                            <div class="form-group col-md-4">
+                                <label for="tipo">Entrada/Salida</label>
+                                <select wire:model="tipo" class="form-control" id="tipo">
+                                    <option value="">Seleccionar</option>
+                                    <option value="1">Entrada</option>
+                                    <option value="2">Salida</option>
+                                    
+                                </select>
+                            </div>
                         </div>
                         <button type="submit" class="btn btn-primary">Aplicar Filtros</button>
                     </form>
@@ -41,17 +50,16 @@
                 <div class="card-header">
                     <strong>Reporte</strong>
                     <div class="float-right">
-                        <button class="btn btn-danger btn-sm"><i class="fa fa-file-pdf"></i> PDF</button>
-                        <button class="btn btn-success btn-sm"><i class="fa fa-file-excel"></i> Excel</button>
-                        <button class="btn btn-primary btn-sm"><i class="fa fa-file-csv"></i> CSV</button>
+                        <button wire:click="exportToPdf" class="btn btn-danger btn-sm"><i class="fa fa-file-pdf"></i>PDF</button>
+                        
                     </div>
                 </div>
                 <div class="card-body">
                     <div class="card-box   mb-2 p-3 rounded">
                         <div class="row wrapper">
-                            <p><strong>Desde:</strong> <?php echo e($fechaini); ?></p>
-                            <p><strong>Hasta:</strong> <?php echo e($fechafin); ?></p>
-                            <p><strong>Tipo de Operación:</strong> <?php echo e($tiposOperacionSelect->nombre?? 'No seleccionado'); ?></p>
+                            <p><strong>Desde: </strong> <?php echo e($fechaini); ?></p>
+                            <p><strong>Hasta: </strong> <?php echo e($fechafin); ?></p>
+                            <p><strong>Tipo de Operación: </strong> <?php echo e($tiposOperacionSelect->nombre?? 'No seleccionado'); ?></p>
 
                         </div>
 

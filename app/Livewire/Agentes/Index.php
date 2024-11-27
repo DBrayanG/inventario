@@ -110,6 +110,7 @@ class Index extends Component
 
     public function render()
     {
+        
         $agentes = Agente::query()
             ->when($this->filtroTipoAgente, function ($query) {
                 $query->where('tipo_agente_id', $this->filtroTipoAgente);

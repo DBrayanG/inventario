@@ -1,11 +1,11 @@
 <div>
     <div>
         <button wire:click="showCreateModal" class="btn btn-primary"><i class="fa fa-plus"></i> Nuevo Agente</button>
-        <button wire:click="$refresh" class="btn btn-secondary">
+        {{-- <button wire:click="$refresh" class="btn btn-secondary">
             <i class="fa fa-refresh"></i> Refrescar
-        </button>
+        </button> --}}
     </div>
-    <div class="mb-4 mt-3">
+    {{-- <div class="mb-2 mt-3">
         <label for="filtroTipoAgente" class="form-label">Filtrar por Tipo de Agente:</label>
         <select id="filtroTipoAgente" wire:model="filtroTipoAgente" class="form-control">
             <option value="">Todos</option>
@@ -13,7 +13,7 @@
                 <option value="{{ $tipoAgente->tipo_agente_id }}">{{ $tipoAgente->nombre }}</option>
             @endforeach
         </select>
-    </div>
+    </div> --}}
     
   <!-- //agregar un boton para refrescar el conponente icono refresh -->
     <div class="mt-4">

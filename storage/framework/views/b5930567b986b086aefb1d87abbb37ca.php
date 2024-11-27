@@ -1,7 +1,7 @@
 <div>
     <div class="row mt-4">
         <div class="col-md-12">
-            <h3>Gestión de Operaciones</h3>
+            <h3>Gestión de Salidas</h3>
             <!--[if BLOCK]><![endif]--><?php if($successMessage): ?>
             <div class="alert alert-success"><?php echo e($successMessage); ?></div>
             <?php endif; ?><!--[if ENDBLOCK]><![endif]-->
@@ -9,20 +9,34 @@
             <div class="alert alert-danger"><?php echo e($errorMessage); ?></div>
             <?php endif; ?><!--[if ENDBLOCK]><![endif]-->
 
-            <button wire:click="showCreateModal" class="btn btn-primary mb-3">Crear Operación</button>
-
+            <button wire:click="showCreateModal" class="btn btn-primary mb-3">Crear Salida</button>
+            <button wire:click="generatePDF" class="btn btn-primary mb-3">Descargar Informe PDF</button>
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label for="fechaInicio">Fecha Inicio:</label>
+                    <input type="date" wire:model="fechaInicio" id="fechaInicio" class="form-control">
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="fechaFin">Fecha Fin:</label>
+                    <input type="date" wire:model="fechaFin" id="fechaFin" class="form-control">
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="mes">Mes:</label>
+                    <input type="month" wire:model="mes" id="mes" class="form-control">
+                </div>
+            </div>
             <!-- Modal de Crear -->
             <div class="modal fade <?php if($showCreate): ?> show d-block <?php endif; ?>" tabindex="-1" role="dialog">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title">Crear Nueva Operación</h5>
+                            <h5 class="modal-title">Crear Nueva Salida</h5>
                             <button type="button" class="close" wire:click="closeModal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form wire:submit.prevent="createOperacion">
+                            <form wire:submit.prevent="createSalida">
                                 <div class="row">
                                     <!-- Columna 1 -->
                                     <div class="col-md-6">
@@ -106,13 +120,13 @@ unset($__errorArgs, $__bag); ?><!--[if ENDBLOCK]><![endif]-->
     <div class="modal-dialog modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Editar Operación</h5>
+                <h5 class="modal-title">Editar Salida</h5>
                 <button type="button" class="close" wire:click="closeModal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <form wire:submit.prevent="updateOperacion">
+                <form wire:submit.prevent="updateSalida">
                     <div class="row">
                         <!-- Columna 1 -->
                         <div class="col-md-6">
@@ -234,18 +248,18 @@ unset($__errorArgs, $__bag); ?><!--[if ENDBLOCK]><![endif]-->
                     </tr>
                 </thead>
                 <tbody>
-                    <!--[if BLOCK]><![endif]--><?php $__currentLoopData = $operaciones; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $operacion): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <!--[if BLOCK]><![endif]--><?php $__currentLoopData = $salidas; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $salida): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <tr>
-                        <td><?php echo e($operacion->operacion_id); ?></td>
-                        <td><?php echo e($operacion->producto->nombre); ?></td>
-                        <td><?php echo e($operacion->fecha); ?></td>
-                        <td><?php echo e($operacion->cantidad); ?></td>
-                        <td><?php echo e($operacion->tipoOperacion->nombre); ?></td>
-                        <td><?php echo e($operacion->agente->nombre); ?></td>
-                        <td><?php echo e($operacion->usuario->name); ?></td>
+                        <td><?php echo e($salida->id); ?></td>
+                        <td><?php echo e($salida->producto->nombre); ?></td>
+                        <td><?php echo e($salida->fecha); ?></td>
+                        <td><?php echo e($salida->cantidad); ?></td>
+                        <td><?php echo e($salida->tipoOperacion->nombre); ?></td>
+                        <td><?php echo e($salida->agente->nombre); ?></td>
+                        <td><?php echo e($salida->usuario->name); ?></td>
                         <td>
-                            <button wire:click="editOperacion(<?php echo e($operacion->operacion_id); ?>)" class="btn btn-sm btn-warning">Editar</button>
-                            <button wire:click="deleteOperacion(<?php echo e($operacion->operacion_id); ?>)" class="btn btn-sm btn-danger">Eliminar</button>
+                            <button wire:click="editSalida(<?php echo e($salida->id); ?>)" class="btn btn-sm btn-warning">Editar</button>
+                            <button wire:click="deleteSalida(<?php echo e($salida->id); ?>)" class="btn btn-sm btn-danger">Eliminar</button>
                         </td>
                     </tr>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?><!--[if ENDBLOCK]><![endif]-->

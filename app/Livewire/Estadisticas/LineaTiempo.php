@@ -2,21 +2,21 @@
 
 namespace App\Livewire\Estadisticas;
 
-use App\Models\Operacion;
+use App\Models\Salida;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 
 class LineaTiempo extends Component
 {
 
-    public $operaciones;
+    public $Salida;
 
  
     public function mount()
     {
-        $this->operaciones = [];
+        $this->Salida = [];
         
-        $this->operaciones = Operacion::select(DB::raw('DATE(fecha) as fecha'), DB::raw('SUM(cantidad) as cantidad'))
+        $this->Salida = Salida::select(DB::raw('DATE(fecha) as fecha'), DB::raw('SUM(cantidad) as cantidad'))
         ->groupBy(DB::raw('DATE(fecha)'))
         ->orderBy('fecha')
         ->get()

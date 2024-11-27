@@ -5,21 +5,25 @@ namespace App\Livewire\Reportes;
 use Livewire\Component;
 
 
-use App\Models\Operacion;
+use App\Models\Entrada;
+use App\Models\Salida;
+use Barryvdh\DomPDF\Facade\Pdf;
 use App\Models\TipoOperacion;
 
 class Index extends Component
 {
     public $fechaini;
     public $fechafin;
+    public $tipo;
     public $operaciones;
     public $tiposOperaciones;
     public $tiposOperacionSelect;
     public $tipo_operacion_id;
+    public $errorMessage;
 
     public function mount()
     {     
-        $this->operaciones = Operacion::all();
+        $this->operaciones = Entrada::all();
         $this->tiposOperaciones = TipoOperacion::all();
     }
 
@@ -33,21 +37,71 @@ class Index extends Component
     }
 
     // Método para obtener operaciones filtradas
-    public function getOperaciones()
+    public function getOperaciones() 
     {
+        // Validación de entradas
         $this->tiposOperacionSelect = TipoOperacion::find($this->tipo_operacion_id);
+        $this->validate([
+            'fechaini' => 'required|date',
+            'fechafin' => 'required|date|after_or_equal:fechaini',
+            'tipo_operacion_id' => 'nullable|exists:tipo_operaciones,tipo_operacion_id', // Verifica que tipo_operacion_id exista en la tabla correcta
+            'tipo' => 'required|in:1,2' // 1 para Entrada, 2 para Salida
+        ]);
 
-        $query = Operacion::query();
+        try {
+            // Definir la consulta base dependiendo del tipo
+            if ($this->tipo == 1) {
+                $query = Entrada::query();
+            } else {
+                $query = Salida::query();
+            }
 
-        // Filtrar por fecha si se proporcionan
-        if ($this->fechaini && $this->fechafin) {
+            // Aplicar filtros de tipo de operación y rango de fechas
+            if ($this->tipo_operacion_id) {
+                $query->where('tipo_operacion_id', $this->tipo_operacion_id);
+            }
+
             $query->whereBetween('fecha', [$this->fechaini, $this->fechafin]);
-        }
 
-        // Filtrar por tipo de operación si se proporciona
-        if ($this->tipo_operacion_id) {
-            $query->where('tipo_operacion_id', $this->tipo_operacion_id);
+            // Obtener los resultados
+            $this->operaciones = $query->with(['producto', 'tipoOperacion', 'agente']) // Ejemplo de relaciones si las tienes
+                ->orderBy('fecha', 'asc')
+                ->get();
+        } catch (\Exception $e) {
+            $this->errorMessage = 'Error al obtener las operaciones: ' . $e->getMessage();
         }
-        $this->operaciones = $query->get();
+    }    
+
+    public function exportToPdf()
+    {
+        
+        try {
+            // Validación para asegurarse de que hay datos para exportar
+            /* if (empty($this->operaciones) || $this->operaciones->isEmpty()) {
+                $this->errorMessage = 'No hay datos para exportar.';
+                return;
+            } */
+
+            // Preparar datos para la vista
+            $data = [
+                'operaciones' => $this->operaciones,
+                'totalCantidad' => $this->totalCantidad,
+                'fechaInicio' => $this->fechaini,
+                'fechaFin' => $this->fechafin,
+                'tipoOperacion' => $this->tipo_operacion_id ? TipoOperacion::find($this->tipo_operacion_id)->nombre : 'Todos',
+            ];
+
+            // Renderizar la vista para el PDF
+            $pdf = Pdf::loadView('livewire.reportes.pdf', $data);
+
+            // Descargar el PDF
+            return $pdf->download('operaciones_' . now()->format('Ymd_His') . '.pdf');
+
+        } catch (\Exception $e) {
+            $this->errorMessage = 'Error al exportar a PDF: ' . $e->getMessage();
+        }
     }
+
+
+
 }
