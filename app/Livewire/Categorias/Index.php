@@ -90,6 +90,6 @@ class Index extends Component
     public function render()
     {
         $this->categorias = Categoria::all();
-        return view('livewire.Categorias.index');
+        return view('livewire.categorias.index');
     }
     }
